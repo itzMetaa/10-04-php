@@ -13,8 +13,13 @@
 	Add meg a korod:<br />
 	<input type="number" name="input_kor"><br />
 	<input type="hidden" name="action" value="cmd_nev_kiiras">
-	<input type="submit" value="Megvizsgál">
+	Kérlek irj be valamit: xd 25-200<br />
+	<textarea name="input_szoveg" maxlength="200"></textarea>
+	<input type="hidden" name="action_2" value="cmd_text_nagybetus">
+	<br /><br /><input type="submit" value="Megvizsgál"><br /><br />
 </form>
+
+<!-- 1. Feladat -->
 <?php
 $kor = $_GET["input_kor"];
 $uNev = $_GET["input_utoNev"];
@@ -30,7 +35,7 @@ if (isset($_GET["action"]) and $_GET["action"]=="cmd_nev_kiiras"){
 		is_string($uNev)
 		){
 			if($kor>0){
-				$f1 = new nev($_GET["input_csaladNev"], $_GET["input_utoNev"], $_GET["input_kor"]);
+				$f1 = new Nev($_GET["input_csaladNev"], $_GET["input_utoNev"], $_GET["input_kor"]);
 				echo $f1->kiir();
 			} else {
 				echo "AA kor mező nem lehet sem negatív, sem nulla!";
@@ -39,16 +44,23 @@ if (isset($_GET["action"]) and $_GET["action"]=="cmd_nev_kiiras"){
 		echo "Kérlek töltsd ki!";
 	}
 }
+?>
+
+<!-- 2. Feladat -->
+<?php 
+$szoveg = $_GET["input_szoveg"];
+if(isset($szoveg)){
+	
+}
 
 ?>
+
 </body>
 </html>              
 <!--
-1. feladat:
-	Kérd be a családneved és utóneved és a korod!
-	Írasd ki egyben ezeket az adatokat az alábbi minta alapján:
-	"Gipsz Jakab, 18 éves vagy!"
-	1.1. Üresen nem maradhat egyik beviteli mező sem!
-	1.2. A kor mező nem lehet sem negatív, sem nulla!
-	1.3. A neveket össze kell illeszteni egy változóba, úgy, hogy minden kezdőbetű legyen nagybetűs!
+2. feladat:
+	Kérj be egy legalább 25 karakterből álló szöveges változót, ami nem állhat több, mint 200 karakter!
+	Ezután írasd ki úgy a szöveget, hogy minden szó kezdőbetűje nagybetűs legyen!
+	Ezután Írsd ki azt is, hogy hány karakterből állt a bevitt érték!
+	Számoltasd meg a szavak számát a mondatban!
 -->
