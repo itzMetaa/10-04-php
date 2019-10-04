@@ -16,18 +16,25 @@
 	<input type="submit" value="Megvizsgál">
 </form>
 <?php
+$kor = $_GET["input_kor"];
+$uNev = $_GET["input_utoNev"];
+$csNev = $_GET["input_csaladNev"];
 
 if (isset($_GET["action"]) and $_GET["action"]=="cmd_nev_kiiras"){
 	if(
-		isset($_GET["input_kor"]) and
-		is_numeric($_GET["input_kor"]) and
-		isset($_GET["input_csaladNev"]) and
-		is_string($_GET["input_csaladNev"]) and
-		isset($_GET["input_utoNev"]) and
-		is_string($_GET["input_utoNev"])
+		isset($kor) and
+		is_numeric($kor) and
+		isset($csNev) and
+		is_string($csNev) and
+		isset($uNev) and
+		is_string($uNev)
 		){
-		$f1 = new nev($_GET["input_csaladNev"], $_GET["input_utoNev"], $_GET["input_kor"]);
-		echo $f1->kiir();
+			if($kor>0){
+				$f1 = new nev($_GET["input_csaladNev"], $_GET["input_utoNev"], $_GET["input_kor"]);
+				echo $f1->kiir();
+			} else {
+				echo "AA kor mező nem lehet sem negatív, sem nulla!";
+			}
 	} else {
 		echo "Kérlek töltsd ki!";
 	}
