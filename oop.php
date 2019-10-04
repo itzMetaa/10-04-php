@@ -1,5 +1,31 @@
 <?php
 
+class nev {
+	public function __construct($csNev, $uNev, $kor){
+		self::set_csNev($csNev);
+		self::set_uNev($uNev);
+		self::set_kor($kor);	
+	}
+
+	private $csNev = "";
+	private $uNev = "";
+	private $kor = 0;
+	public function kiir(){
+		$s = $this->csNev . " " . $this->uNev . ", " . $this->kor . " éves vagy!";
+		echo $s;
+	}
+	public function set_csNev($ertek){
+		$this->csNev = $ertek;
+	}
+	public function set_uNev($ertek){
+		$this->uNev = $ertek;
+	}
+	public function set_kor($ertek){
+		$this->kor = $ertek;
+	}
+
+}
+
 class eldontes{
 	public function __construct($szam){
 		self::set_szam($szam);
